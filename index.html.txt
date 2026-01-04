@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer & AI Expert | Europe Studio</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #111 0%, #222 100%); }
+        .gallery-item img { width: 100%; height: 350px; object-fit: cover; transition: all 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.03); filter: brightness(1.1); }
+        .tab-active { border-bottom: 2px solid #6366f1; color: #6366f1; font-weight: 600; }
+        .hidden { display: none; }
+        section { scroll-margin-top: 80px; }
+        .video-container iframe { width: 100%; height: 100%; border-radius: 1.5rem; }
+    </style>
+</head>
+<body class="bg-[#fcfcfc] text-gray-900 font-sans">
+
+    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-[60]">
+        <a href="https://instagram.com/ВАШ_ЛОГИН" target="_blank" class="w-12 h-12 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+            <i class="fab fa-instagram text-2xl"></i>
+        </a>
+        <a href="https://tiktok.com/@ВАШ_ЛОГИН" target="_blank" class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+            <i class="fab fa-tiktok text-xl"></i>
+        </a>
+    </div>
+
+    <nav class="sticky top-0 bg-white/90 backdrop-blur-md shadow-sm z-50 p-4 border-b border-gray-100">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="font-bold text-lg tracking-widest uppercase">STUDIO <span class="text-indigo-600">DESIGN</span></div>
+            <select id="langSwitcher" onchange="changeLang(this.value)" class="border border-gray-200 rounded px-2 py-1 text-xs bg-white outline-none focus:ring-1 focus:ring-indigo-500 cursor-pointer">
+                <option value="ru">Русский 🇷🇺</option>
+                <option value="it">Italiano 🇮🇹</option>
+                <option value="et">Eesti 🇪🇪</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="bg-indigo-600 p-2.5 text-center text-white text-xs font-bold uppercase tracking-widest" id="promo-text">
+        🔥 Акция: При заказе кухни — ИИ-фотосессия в подарок!
+    </div>
+
+    <header class="gradient-bg text-white py-24 px-6 text-center">
+        <h1 id="hero-title" class="text-4xl md:text-6xl font-extrabold mb-6">Создаю уют и реализую мечту</h1>
+        <p id="hero-subtitle" class="text-gray-400 max-w-2xl mx-auto text-lg mb-10">Профессиональный дизайн интерьера и уникальный контент от искусственного интеллекта</p>
+        <a href="#contact" class="bg-white text-black px-10 py-4 rounded-full font-bold hover:bg-indigo-500 hover:text-white transition-all duration-300 inline-block shadow-xl" id="btn-main">Связаться со мной</a>
+    </header>
+
+    <section class="container mx-auto py-16 px-6 grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-10 rounded-[2rem] border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+            <div>
+                <h2 id="furn-title" class="text-2xl font-bold mb-4">🏠 Дизайн мебели и кухонь</h2>
+                <p id="price-f" class="text-gray-500 mb-8 text-sm">Консультация и 3D проект 100 €. При заказе мебели — проект бесплатно (возврат средств).</p>
+            </div>
+            <a href="#contact" class="w-full py-4 border-2 border-black text-center rounded-xl font-bold hover:bg-black hover:text-white transition" id="btn-furn">Заказать проект</a>
+        </div>
+        
+        <div class="bg-white p-10 rounded-[2rem] border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+            <div>
+                <div class="flex justify-between items-start mb-4">
+                    <h2 id="ai-title" class="text-2xl font-bold">🤖 ИИ-Фотосессия</h2>
+                    <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-md uppercase">+ Video Gift</span>
+                </div>
+                <div class="mb-8 bg-slate-50 p-6 rounded-2xl">
+                    <span id="price-label" class="text-gray-400 text-xs block mb-1">Начиная от</span>
+                    <span class="text-4xl font-black text-indigo-600">20 €</span>
+                    <p id="price-ai-extra" class="text-indigo-400 text-sm mt-2 font-semibold italic">+ 1 видео в подарок!</p>
+                </div>
+            </div>
+            <a href="#contact" class="w-full py-4 bg-indigo-600 text-white text-center rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-100" id="btn-ai">Хочу фотосессию</a>
+        </div>
+    </section>
+
+    <section class="container mx-auto py-10 px-6 border-t border-gray-50">
+        <h2 id="video-title" class="text-3xl font-bold mb-10 text-center uppercase tracking-tighter">Видео-обзоры</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="aspect-video video-container shadow-2xl bg-black">
+                <iframe src="https://www.youtube.com/embed/ID_ВИДЕО_1" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="aspect-video video-container shadow-2xl bg-black">
+                <iframe src="https://www.youtube.com/embed/ID_ВИДЕО_2" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mx-auto py-16 px-6">
+        <div class="flex justify-center mb-12 space-x-10 border-b border-gray-100">
+            <button id="tab-f" class="tab-active py-4 text-sm uppercase tracking-widest transition" onclick="toggleGallery('f')">Мебель</button>
+            <button id="tab-ai" class="py-4 text-sm uppercase tracking-widest text-gray-400 transition" onclick="toggleGallery('ai')">ИИ-Работы</button>
+        </div>
+        
+        <div id="gallery-f" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="gallery-item rounded-2xl overflow-hidden bg-gray-100 shadow-sm"><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600" alt="Kitchen"></div>
+            <div class="gallery-item rounded-2xl overflow-hidden bg-gray-100 shadow-sm"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600" alt="Kitchen"></div>
+            <div class="gallery-item rounded-2xl overflow-hidden bg-gray-100 shadow-sm"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600" alt="Kitchen"></div>
+        </div>
+
+        <div id="gallery-ai" class="grid grid-cols-1 md:grid-cols-3 gap-6 hidden">
+            <div class="gallery-item rounded-2xl overflow-hidden bg-gray-100 shadow-sm"><img src="https://images.unsplash.com/photo-1618335829737-2228ad30662b?w=600" alt="AI"></div>
+            <div class="gallery-item rounded-2xl overflow-hidden bg-gray-100 shadow-sm"><img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=600" alt="AI"></div>
+            <div class="gallery-item rounded-2xl overflow-hidden bg-gray-100 shadow-sm"><img src="https://images.unsplash.com/photo-1633109529152-d695121ca943?w=600" alt="AI"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="container mx-auto py-20 px-6 max-w-xl text-center">
+        <div class="bg-white p-10 rounded-[3rem] shadow-2xl border border-gray-50">
+            <h2 id="contact-title" class="text-3xl font-bold mb-8">Связаться со мной</h2>
+            <div class="mb-8 text-left">
+                <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3" id="lbl-service">Выберите направление</label>
+                <select id="service-select" class="w-full p-4 border border-gray-100 rounded-2xl bg-gray-50 outline-none focus:ring-2 focus:ring-indigo-500 transition-all cursor-pointer">
+                    <option id="opt-f" value="Мебель и Дизайн">Мебель и Кухни</option>
+                    <option id="opt-ai" value="ИИ-Фотосессия">ИИ-Фотосессия (+ Видео)</option>
+                </select>
+            </div>
+            <button onclick="sendWhatsApp()" class="w-full py-5 bg-[#25D366] text-white rounded-2xl font-bold text-xl hover:shadow-xl transition flex items-center justify-center gap-3">
+                <i class="fab fa-whatsapp"></i>
+                <span id="btn-send">WhatsApp</span>
+            </button>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gray-50 border-t border-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h3 id="social-title" class="text-sm font-bold uppercase tracking-[0.2em] text-gray-400 mb-8">Следите за проектами в соцсетях</h3>
+            <div class="flex justify-center gap-10">
+                <a href="https://instagram.com/ВАШ_ЛОГИН" target="_blank" class="group flex flex-col items-center gap-2 grayscale hover:grayscale-0 transition-all">
+                    <i class="fab fa-instagram text-3xl text-pink-600"></i>
+                    <span class="font-bold text-xs text-gray-500 group-hover:text-black uppercase">Instagram</span>
+                </a>
+                <a href="https://tiktok.com/@ВАШ_ЛОГИН" target="_blank" class="group flex flex-col items-center gap-2 grayscale hover:grayscale-0 transition-all">
+                    <i class="fab fa-tiktok text-3xl text-black"></i>
+                    <span class="font-bold text-xs text-gray-500 group-hover:text-black uppercase">TikTok</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white py-12 text-center text-gray-400 text-xs tracking-widest uppercase">
+        <p>© 2026 Studio Design Europe. Created for your business.</p>
+    </footer>
+
+    <script>
+        // 37255659292
+        const MY_PHONE = "37255659292"; 
+
+        const translations = {
+            ru: {
+                promo: "🔥 Акция: При заказе кухни — ИИ-фотосессия в подарок!",
+                heroTitle: "Создаю уют и реализую мечту",
+                heroSubtitle: "От проектирования интерьера до вашего цифрового образа с помощью ИИ",
+                btnMain: "Связаться со мной",
+                furnTitle: "🏠 Дизайн мебели и кухонь",
+                aiTitle: "🤖 ИИ-Фотосессия",
+                priceF: "Консультация и 3D проект - 100 €. Бесплатно при заказе (возврат).",
+                priceLabel: "Начиная от 20 €",
+                priceAiExtra: "+ 1 видео в подарок!",
+                btnFurn: "Заказать проект",
+                btnAi: "Хочу фотосессию",
+                videoTitle: "Видео-обзоры",
+                tabF: "Мебель",
+                tabAi: "ИИ-Работы",
+                contactTitle: "Оставить заявку",
+                lblService: "Выберите направление",
+                optF: "Мебель и Дизайн",
+                optAi: "ИИ-Фотосессия (+ Видео)",
+                btnSend: "Написать в WhatsApp",
+                socialTitle: "Следите за проектами в соцсетях",
+                waMsg: "Здравствуйте! Хочу заказать: "
+            },
+            it: {
+                promo: "🔥 Promo: Progetto cucina = Servizio fotografico AI gratis!",
+                heroTitle: "Il tuo sogno, il mio design",
+                heroSubtitle: "Dalle cucine su misura ai ritratti digitali creati con l'IA",
+                btnMain: "Contattami",
+                furnTitle: "🏠 Arredamento & Cucine",
+                aiTitle: "🤖 Servizio AI Foto",
+                priceF: "Consulenza e 3D 100 €. Gratuito con l'ordine (rimborso).",
+                priceLabel: "A partire da 20 €",
+                priceAiExtra: "+ 1 video in regalo!",
+                btnFurn: "Richiedi progetto",
+                btnAi: "Prenota servizio AI",
+                videoTitle: "Recensioni Video",
+                tabF: "Arredamento",
+                tabAi: "Lavori AI",
+                contactTitle: "Prenota ora",
+                lblService: "Servizio",
+                optF: "Mobili e Cucine",
+                optAi: "AI Foto (+ Video)",
+                btnSend: "Invia su WhatsApp",
+                socialTitle: "Seguimi sui social",
+                waMsg: "Buongiorno! Sono interessato a: "
+            },
+            et: {
+                promo: "🔥 Kampaania: Köögi tellimus = Tasuta AI-fotosessioon!",
+                heroTitle: "Loon mugavust ja täidan unistusi",
+                heroSubtitle: "Eritellimusmööblist sinu digitaalse portreeni tehisintellektiga",
+                btnMain: "Võta ühendust",
+                furnTitle: "🏠 Mööbel & Köögid",
+                aiTitle: "🤖 AI-Fotosessioon",
+                priceF: "Konsultatsioon ja 3D projekt 100 €. Tasuta tellimuse puhul.",
+                priceLabel: "Alates 20 €",
+                priceAiExtra: "+ 1 video kingituseks!",
+                btnFurn: "Telli projekt",
+                btnAi: "Soovin AI-sessiooni",
+                videoTitle: "Video ülevaated",
+                tabF: "Mööbel",
+                tabAi: "AI tööd",
+                contactTitle: "Broneeri aeg",
+                lblService: "Teenuse tüüp",
+                optF: "Mööbel ja disain",
+                optAi: "AI-fotosessioon (+ Video)",
+                btnSend: "Saada WhatsAppis",
+                socialTitle: "Jälgi mind sotsiaalmeedias",
+                waMsg: "Tere! Olen huvitatud: "
+            }
+        };
+
+        let currentLang = 'ru';
+
+        function changeLang(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+            document.getElementById('promo-text').innerText = t.promo;
+            document.getElementById('hero-title').innerText = t.heroTitle;
+            document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
+            document.getElementById('btn-main').innerText = t.btnMain;
+            document.getElementById('furn-title').innerText = t.furnTitle;
+            document.getElementById('ai-title').innerText = t.aiTitle;
+            document.getElementById('price-f').innerText = t.priceF;
+            document.getElementById('price-label').innerText = t.priceLabel;
+            document.getElementById('price-ai-extra').innerText = t.priceAiExtra;
+            document.getElementById('btn-furn').innerText = t.btnFurn;
+            document.getElementById('btn-ai').innerText = t.btnAi;
+            document.getElementById('video-title').innerText = t.videoTitle;
+            document.getElementById('tab-f').innerText = t.tabF;
+            document.getElementById('tab-ai').innerText = t.tabAi;
+            document.getElementById('contact-title').innerText = t.contactTitle;
+            document.getElementById('lbl-service').innerText = t.lblService;
+            document.getElementById('opt-f').innerText = t.optF;
+            document.getElementById('opt-ai').innerText = t.optAi;
+            document.getElementById('btn-send').innerText = t.btnSend;
+            document.getElementById('social-title').innerText = t.socialTitle;
+        }
+
+        function toggleGallery(type) {
+            document.getElementById('gallery-f').classList.toggle('hidden', type !== 'f');
+            document.getElementById('gallery-ai').classList.toggle('hidden', type !== 'ai');
+            document.getElementById('tab-f').classList.toggle('tab-active', type === 'f');
+            document.getElementById('tab-ai').classList.toggle('tab-active', type === 'ai');
+            document.getElementById('tab-f').classList.toggle('text-gray-400', type !== 'f');
+            document.getElementById('tab-ai').classList.toggle('text-gray-400', type !== 'ai');
+        }
+
+        function sendWhatsApp() {
+            const service = document.getElementById('service-select').value;
+            const message = translations[currentLang].waMsg + service;
+            window.open(`https://wa.me/${MY_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
