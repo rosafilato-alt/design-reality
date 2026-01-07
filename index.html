@@ -40,12 +40,11 @@
         }
         .btn-gradient:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 133, 162, 0.5); }
 
-        /* Стили фильтрации */
+        /* Стили галереи */
         .filter-btn.active {
             background: linear-gradient(90deg, #ff85a2, #a78bfa);
             border-color: transparent;
         }
-
         .gallery-item { transition: all 0.5s ease-in-out; }
         .gallery-item.hidden { display: none; opacity: 0; transform: scale(0.9); }
 
@@ -66,17 +65,50 @@
         </div>
     </nav>
 
-    <header class="text-center pt-24 pb-12 px-6 reveal active">
+    <header class="text-center pt-24 pb-12 px-6 reveal">
         <h1 class="text-5xl md:text-8xl font-bold mb-6 italic tracking-tighter text-white">Digital <span class="pacifico font-normal text-pink-300">Cotton</span></h1>
         <p class="max-w-xl mx-auto opacity-60 text-sm md:text-base mb-10">Твои идеальные ИИ-фотосессии в эстетике нежности и вкуса.</p>
         <a href="#prices" class="btn-gradient px-12 py-5 rounded-full font-bold uppercase text-[10px] tracking-widest inline-block">Заказать съемку</a>
     </header>
 
-    <section id="prices" class="py-20 px-6 max-w-6xl mx-auto reveal active">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl md:text-6xl pacifico mb-4 text-pink-200">Пакеты услуг</h2>
+    <section id="about" class="py-24 px-6 max-w-6xl mx-auto reveal">
+        <div class="glass-card p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden">
+            <div class="absolute -top-20 -left-20 w-64 h-64 bg-pink-500/20 blur-[100px] rounded-full"></div>
+            
+            <div class="relative w-64 h-80 shrink-0">
+                <div class="absolute inset-0 bg-gradient-to-tr from-pink-400 to-purple-500 rounded-3xl blur-2xl opacity-20 transition-opacity"></div>
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600" alt="Master" class="relative w-full h-full object-cover rounded-3xl border border-white/10 grayscale-[30%] hover:grayscale-0 transition-all duration-700 shadow-2xl">
+            </div>
+
+            <div class="space-y-6">
+                <h2 class="text-3xl md:text-4xl font-bold italic tracking-tighter">
+                    Привет! Рада видеть вас во <span class="pacifico text-pink-300 font-normal">вселенной красоты</span>
+                </h2>
+                
+                <div class="text-sm md:text-base opacity-70 leading-relaxed space-y-4">
+                    <p>Я — человек энергии и эстетики. Дизайн, декор, фотосъемка и реклама — это моя жизнь. Признаюсь, поначалу я была скептиком AI, но как только увидела возможности нейросетей, поняла: <strong>это настоящий подарок.</strong></p>
+                    <p>Сначала AI стал моим спасением как мамы — когда хочется стильных фото ребенка, а фотографировать дочку с каждым месяцем всё сложнее. Затем я открыла магию для взрослых. Здесь нужно суметь прочувствовать человека, его характер, вкус и настроение.</p>
+                    <p><strong>Мой подход — это не просто «нажать на кнопку».</strong> Работа профессионала — это умение угадать ожидания клиентки, которая меняется, худеет или меняет имидж. Я отношусь к женщинам бережно и нежно, сохраняя вашу природную красоту.</p>
+                    <p class="text-pink-200 italic font-bold pt-2">Будьте смелыми! Позвольте себе этот вдохновляющий опыт и взрыв положительных эмоций.</p>
+                </div>
+
+                <div class="flex gap-8 pt-4">
+                    <div><div class="text-2xl font-bold text-pink-300 uppercase">Pro</div><div class="text-[10px] opacity-40 uppercase tracking-widest">Подход</div></div>
+                    <div><div class="text-2xl font-bold text-pink-300 uppercase">100%</div><div class="text-[10px] opacity-40 uppercase tracking-widest">Узнаваемость</div></div>
+                </div>
+            </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    </section>
+
+    <section id="prices" class="py-20 px-6 max-w-6xl mx-auto reveal">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-6xl pacifico mb-4 text-pink-200">Январский Sale</h2>
+            <div class="inline-block bg-pink-500/10 border border-pink-500/30 px-8 py-3 rounded-full">
+                <span class="text-pink-200 font-bold tracking-widest uppercase text-xs">Акция: <span class="text-white text-xl ml-2">39€</span> за 10 фото + Видео</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="glass-card p-10 flex flex-col justify-between group">
                 <div>
                     <h3 class="text-2xl font-bold mb-2 uppercase italic">Для девочек</h3>
@@ -86,48 +118,48 @@
                         <li>✦ 1 Видео-арт в подарок</li>
                     </ul>
                 </div>
-                <button onclick="alert('Заказ принят: Девочки')" class="btn-gradient w-full py-4 rounded-full font-bold uppercase text-[10px] tracking-widest">Заказать</button>
+                <button class="btn-gradient w-full py-4 rounded-full font-bold uppercase text-[10px] tracking-widest">Заказать</button>
             </div>
+
             <div class="glass-card p-10 flex flex-col justify-between border-purple-400/30">
                 <div>
                     <h3 class="text-2xl font-bold mb-2 text-purple-100 uppercase italic">Для мальчиков</h3>
                     <p class="text-[10px] text-purple-300 mb-8 uppercase tracking-widest">Modern Style</p>
                     <ul class="space-y-4 mb-10 text-sm opacity-70">
                         <li>✦ 10 ИИ-фотографий</li>
-                        <li>✦ Стильная обработка</li>
+                        <li>✦ Индивидуальный образ</li>
                     </ul>
                 </div>
-                <button onclick="alert('Заказ принят: Мальчики')" class="btn-gradient w-full py-4 rounded-full font-bold uppercase text-[10px] tracking-widest">Заказать</button>
+                <button class="btn-gradient w-full py-4 rounded-full font-bold uppercase text-[10px] tracking-widest">Заказать</button>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="py-24 px-6 max-w-7xl mx-auto reveal active">
+    <section id="gallery" class="py-24 px-6 max-w-7xl mx-auto reveal">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-6xl pacifico mb-8 text-pink-200">Галерея работ</h2>
             <div class="flex flex-wrap justify-center gap-4 mb-12">
                 <button onclick="filterGallery('all')" class="filter-btn active px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold transition-all">Все</button>
                 <button onclick="filterGallery('girls')" class="filter-btn px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold transition-all">Для девочек</button>
                 <button onclick="filterGallery('boys')" class="filter-btn px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold transition-all">Для мальчиков</button>
-                <button onclick="filterGallery('mood')" class="filter-btn px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold transition-all">Настроение</button>
+                <button onclick="filterGallery('mood')" class="filter-btn px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest font-bold transition-all">Для настроения</button>
             </div>
         </div>
 
         <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="gallery-item girls glass-card overflow-hidden group">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" alt="Girls">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
             </div>
             <div class="gallery-item boys glass-card overflow-hidden group">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" alt="Boys">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
             </div>
             <div class="gallery-item mood glass-card overflow-hidden group">
-                <img src="https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?w=600" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110" alt="Mood">
+                <img src="https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?w=600" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
             </div>
         </div>
     </section>
 
     <script>
-        // Функция фильтрации
         function filterGallery(category) {
             const items = document.querySelectorAll('.gallery-item');
             const buttons = document.querySelectorAll('.filter-btn');
@@ -146,12 +178,14 @@
             });
         }
 
-        // Анимация появления при скролле
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.reveal').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+        // Плавное появление элементов
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
