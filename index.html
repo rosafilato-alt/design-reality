@@ -3,151 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AII Dream | ИИ-Фотосессии в мире сахарной ваты</title>
+    <title>AII Dream Studio | Твоя ИИ-Фотосессия</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;700&family=Pacifico&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --cotton-pink: #ffd1dc;
-            --ai-blue: #d1e9ff;
-            --glow: rgba(255, 133, 162, 0.5);
-        }
-        
-        body { 
-            font-family: 'Comfortaa', cursive; 
-            background: linear-gradient(135deg, #ffd1dc 0%, #d1e9ff 50%, #e2d1ff 100%);
-            background-attachment: fixed;
-            color: #4a3a5b;
-        }
-
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 40px;
-        }
-
-        .ai-card {
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .ai-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px var(--glow);
-        }
-
-        .neon-text {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px var(--glow);
-        }
-
+        :root { --pink: #ffb6c1; --purple: #b39ddb; }
+        body { font-family: 'Unbounded', sans-serif; background: #0a0a0a; color: white; scroll-behavior: smooth; overflow-x: hidden; }
         .pacifico { font-family: 'Pacifico', cursive; }
+        
+        /* Анимированный фон */
+        .candy-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at 10% 20%, rgba(255,182,193,0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(179,157,219,0.15) 0%, transparent 40%);
+            filter: blur(80px);
+            animation: pulseBg 10s infinite alternate ease-in-out;
+        }
+        @keyframes pulseBg { 0% { opacity: 0.5; } 100% { opacity: 1; } }
 
-        .floating {
-            animation: floating 3s ease-in-out infinite;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            transition: all 0.4s ease;
+        }
+        .glass-card:hover {
+            border-color: var(--pink);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(255, 182, 193, 0.1);
         }
 
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        .btn-gradient {
+            background: linear-gradient(90deg, #ff85a2, #a78bfa);
+            transition: all 0.3s ease;
         }
+        .btn-gradient:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 133, 162, 0.5); }
 
-        .gradient-text {
-            background: linear-gradient(to right, #ff85a2, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        /* Анимация появления */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto">
-        <div class="text-3xl pacifico text-white neon-text">AII Dream</div>
-        <div class="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest text-white/80">
-            <a href="#how-it-works" class="hover:text-white transition">Как это работает</a>
-            <a href="#gallery" class="hover:text-white transition">Галерея</a>
-            <a href="#prices" class="hover:text-white transition">Цены</a>
-        </div>
-        <button onclick="openWhatsApp()" class="glass-panel px-6 py-2 text-sm font-bold hover:bg-white/40 transition">
-            Book Now
+    <div class="candy-bg"></div>
+
+    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto relative z-[100]">
+        <div class="text-2xl pacifico text-pink-200">AII Dream</div>
+        
+        <button id="menu-btn" class="md:hidden text-white relative z-[110]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
         </button>
+
+        <div id="menu" class="hidden md:flex gap-6 text-[10px] uppercase tracking-widest font-bold absolute md:relative top-0 left-0 w-full h-screen md:h-auto bg-[#0a0a0a] md:bg-transparent p-10 md:p-0 flex-col md:flex-row items-center justify-center md:justify-end backdrop-blur-xl md:backdrop-blur-none z-[100]">
+            <a href="#about" class="hover:text-pink-300 py-4 md:py-0">Обо мне</a>
+            <a href="#gallery" class="hover:text-pink-300 py-4 md:py-0">Работы</a>
+            <a href="#prices" class="hover:text-pink-300 py-4 md:py-0">Цены</a>
+            <a href="#faq" class="hover:text-pink-300 py-4 md:py-0">FAQ</a>
+        </div>
     </nav>
 
-    <header class="container mx-auto text-center py-20 px-6">
-        <div class="floating inline-block mb-6">
-            <span class="glass-panel px-4 py-2 text-[10px] uppercase tracking-[0.3em] font-bold text-white">Future of Photography</span>
-        </div>
-        <h1 class="text-5xl md:text-8xl pacifico text-white mb-8 leading-tight">
-            Ваш образ в мире <br> <span class="gradient-text">сахарных снов</span>
-        </h1>
-        <p class="max-w-xl mx-auto text-lg mb-12 text-[#6a5a7b] leading-relaxed">
-            Мы используем нейросети нового поколения, чтобы создать ваши идеальные портреты в стиле Cotton Candy. Реальность еще никогда не была такой сладкой.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="#gallery" class="bg-white text-[#ff85a2] px-10 py-4 rounded-full font-bold shadow-xl hover:scale-105 transition transform">Посмотреть работы</a>
-            <a href="#prices" class="glass-panel text-white px-10 py-4 rounded-full font-bold hover:bg-white/20 transition">Выбрать пакет</a>
-        </div>
+    <header class="text-center pt-24 pb-12 px-6 reveal">
+        <h1 class="text-5xl md:text-8xl font-bold mb-6 italic tracking-tighter">Digital <span class="pacifico font-normal text-pink-300">Cotton</span></h1>
+        <p class="max-w-xl mx-auto opacity-60 text-sm md:text-base mb-10">Твои портреты в стиле сахарной ваты, созданные нейросетью.</p>
+        <a href="#prices" class="btn-gradient px-10 py-4 rounded-full font-bold uppercase text-xs">Выбрать пакет</a>
     </header>
 
-    <section id="gallery" class="container mx-auto py-24 px-6">
-        <h2 class="text-3xl pacifico text-white text-center mb-16 neon-text">Magic Results</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="ai-card glass-panel p-3 aspect-[3/4]">
-                <img src="https://images.unsplash.com/photo-1618335829737-2228ad30662b?w=600" class="w-full h-full object-cover rounded-[30px]" alt="AI Portrait">
-                <div class="absolute bottom-6 left-6 right-6 p-4 glass-panel text-center text-xs font-bold text-white">
-                    Портрет "Облако"
-                </div>
-            </div>
-            <div class="ai-card glass-panel p-3 aspect-[3/4]">
-                <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=600" class="w-full h-full object-cover rounded-[30px]" alt="AI Art">
-                <div class="absolute bottom-6 left-6 right-6 p-4 glass-panel text-center text-xs font-bold text-white">
-                    Стиль "Candy Pink"
-                </div>
-            </div>
-            <div class="ai-card glass-panel p-3 aspect-[3/4]">
-                <img src="https://images.unsplash.com/photo-1633109529152-d695121ca943?w=600" class="w-full h-full object-cover rounded-[30px]" alt="AI Cyber">
-                <div class="absolute bottom-6 left-6 right-6 p-4 glass-panel text-center text-xs font-bold text-white">
-                    Неоновая вата
-                </div>
-            </div>
-            <div class="ai-card glass-panel p-3 aspect-[3/4]">
-                <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=600" class="w-full h-full object-cover rounded-[30px]" alt="AI Dream">
-                <div class="absolute bottom-6 left-6 right-6 p-4 glass-panel text-center text-xs font-bold text-white">
-                    Магия лаванды
-                </div>
+    <section id="prices" class="py-20 px-6 max-w-6xl mx-auto reveal">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-5xl pacifico mb-4 text-pink-200">Январский Sale</h2>
+            <div class="inline-block bg-pink-500/20 border border-pink-500/50 px-6 py-2 rounded-full">
+                <p class="text-xs md:text-sm font-bold uppercase tracking-widest text-pink-300">
+                    Акция: <span class="text-white">39€</span> за 10 фото + Видео в подарок
+                </p>
             </div>
         </div>
-    </section>
 
-    <section id="prices" class="container mx-auto py-24 px-6">
-        <div class="max-w-4xl mx-auto glass-panel p-12 text-center relative overflow-hidden">
-            <div class="absolute top-0 right-0 p-4 bg-[#ff85a2] text-white text-[10px] font-bold uppercase rotate-12 translate-x-4">Hot Offer</div>
-            <h2 class="text-4xl pacifico mb-6 text-white">Начни свою сказку</h2>
-            <p class="text-[#6a5a7b] mb-10 italic">Персональная фотосессия с ИИ включает 10 обработанных кадров + видео-арт в подарок</p>
-            <div class="text-6xl font-black text-white mb-10 neon-text">29 €</div>
-            <button onclick="openWhatsApp()" class="bg-[#ff85a2] text-white px-12 py-5 rounded-full font-bold text-xl hover:shadow-[0_0_30px_rgba(255,133,162,0.6)] transition-all">
-                Заказать фотосессию
-            </button>
-        </div>
-    </section>
-
-    <footer class="py-12 text-center text-white/60 text-xs">
-        <p class="pacifico text-lg mb-2">AII Dream Studio</p>
-        <p>© 2026. Искусственный интеллект с душой сахарной ваты.</p>
-    </footer>
-
-    <script>
-        const PHONE = "39000000000"; // Замените на ваш номер
-
-        function openWhatsApp() {
-            const text = "Привет! Хочу волшебную ИИ-фотосессию в стиле Cotton Candy ✨";
-            window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`, '_blank');
-        }
-    </script>
-</body>
-</html>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 flex flex-col justify-between border-white/10">
+                <div>
+                    <h3 class="text-xl font-bold mb-2 text-pink-100">Для девочек</h3>
+                    <p class="text-[10px] text-pink-300 mb-6 uppercase tracking-widest">Digital Magic</p>
+                    <p class="text-4xl font-bold mb-6">39€</p>
+                    <ul class="text-xs opacity-70 space-y-4 mb-10">
+                        <li>✦ 10 ИИ-портретов</li>
+                        <li>✦ 1 Видео-арт в подарок</li>
+                        <li>✦ Стиль Sugar Dream</li>
+                    </ul>
