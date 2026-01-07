@@ -12,7 +12,6 @@
         body { font-family: 'Unbounded', sans-serif; background: #0a0a0a; color: white; scroll-behavior: smooth; overflow-x: hidden; }
         .pacifico { font-family: 'Pacifico', cursive; }
         
-        /* Анимированный фон */
         .candy-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: radial-gradient(circle at 10% 20%, rgba(255,182,193,0.15) 0%, transparent 40%),
@@ -41,7 +40,6 @@
         }
         .btn-gradient:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 133, 162, 0.5); }
 
-        /* Анимация появления */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
@@ -59,7 +57,7 @@
             </svg>
         </button>
 
-        <div id="menu" class="hidden md:flex gap-6 text-[10px] uppercase tracking-widest font-bold absolute md:relative top-0 left-0 w-full h-screen md:h-auto bg-[#0a0a0a] md:bg-transparent p-10 md:p-0 flex-col md:flex-row items-center justify-center md:justify-end backdrop-blur-xl md:backdrop-blur-none z-[100]">
+        <div id="menu" class="hidden md:flex gap-8 text-[10px] uppercase tracking-widest font-bold absolute md:relative top-0 left-0 w-full h-screen md:h-auto bg-[#0a0a0a] md:bg-transparent p-10 md:p-0 flex-col md:flex-row items-center justify-center md:justify-end backdrop-blur-xl md:backdrop-blur-none z-[100]">
             <a href="#about" class="hover:text-pink-300 py-4 md:py-0">Обо мне</a>
             <a href="#gallery" class="hover:text-pink-300 py-4 md:py-0">Работы</a>
             <a href="#prices" class="hover:text-pink-300 py-4 md:py-0">Цены</a>
@@ -68,9 +66,9 @@
     </nav>
 
     <header class="text-center pt-24 pb-12 px-6 reveal">
-        <h1 class="text-5xl md:text-8xl font-bold mb-6 italic tracking-tighter">Digital <span class="pacifico font-normal text-pink-300">Cotton</span></h1>
+        <h1 class="text-5xl md:text-8xl font-bold mb-6 italic tracking-tighter text-white">Digital <span class="pacifico font-normal text-pink-300">Cotton</span></h1>
         <p class="max-w-xl mx-auto opacity-60 text-sm md:text-base mb-10">Твои портреты в стиле сахарной ваты, созданные нейросетью.</p>
-        <a href="#prices" class="btn-gradient px-10 py-4 rounded-full font-bold uppercase text-xs">Выбрать пакет</a>
+        <a href="#prices" class="btn-gradient px-10 py-4 rounded-full font-bold uppercase text-xs inline-block">Выбрать пакет</a>
     </header>
 
     <section id="prices" class="py-20 px-6 max-w-6xl mx-auto reveal">
@@ -84,13 +82,96 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="glass-card p-8 flex flex-col justify-between border-white/10">
+            <div class="glass-card p-8 flex flex-col justify-between">
                 <div>
-                    <h3 class="text-xl font-bold mb-2 text-pink-100">Для девочек</h3>
-                    <p class="text-[10px] text-pink-300 mb-6 uppercase tracking-widest">Digital Magic</p>
+                    <h3 class="text-xl font-bold mb-2 text-pink-100 uppercase italic">Для девочек</h3>
+                    <p class="text-[10px] text-pink-300 mb-6 uppercase tracking-widest">Digital Aesthetics</p>
                     <p class="text-4xl font-bold mb-6">39€</p>
                     <ul class="text-xs opacity-70 space-y-4 mb-10">
                         <li>✦ 10 ИИ-портретов</li>
                         <li>✦ 1 Видео-арт в подарок</li>
-                        <li>✦ Стиль Sugar Dream</li>
+                        <li>✦ Эстетика Sugar Dream</li>
                     </ul>
+                </div>
+                <button onclick="order('Для девочек')" class="btn-gradient w-full py-4 rounded-full font-bold text-[10px] uppercase">Выбрать</button>
+            </div>
+
+            <div class="glass-card p-8 flex flex-col justify-between border-purple-400/30">
+                <div>
+                    <h3 class="text-xl font-bold mb-2 text-purple-100 uppercase italic">Для мальчиков</h3>
+                    <p class="text-[10px] text-purple-300 mb-6 uppercase tracking-widest">Character & Style</p>
+                    <p class="text-4xl font-bold mb-6">39€</p>
+                    <ul class="text-xs opacity-70 space-y-4 mb-10">
+                        <li>✦ 10 ИИ-портретов</li>
+                        <li>✦ 1 Видео-арт в подарок</li>
+                        <li>✦ Современный Digital-Look</li>
+                    </ul>
+                </div>
+                <button onclick="order('Для мальчиков')" class="btn-gradient w-full py-4 rounded-full font-bold text-[10px] uppercase">Выбрать</button>
+            </div>
+
+            <div class="glass-card p-8 flex flex-col justify-between border-pink-400/30">
+                <div>
+                    <h3 class="text-xl font-bold mb-2 text-pink-100 uppercase italic">Для настроения</h3>
+                    <p class="text-[10px] text-pink-300 mb-6 uppercase tracking-widest">Creative Vibes</p>
+                    <p class="text-4xl font-bold mb-6">39€</p>
+                    <ul class="text-xs opacity-70 space-y-4 mb-10">
+                        <li>✦ 10 ИИ-портретов</li>
+                        <li>✦ 1 Видео-арт в подарок</li>
+                        <li>✦ Полный полет фантазии</li>
+                    </ul>
+                </div>
+                <button onclick="order('Для настроения')" class="btn-gradient w-full py-4 rounded-full font-bold text-[10px] uppercase">Выбрать</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-20 px-6 max-w-7xl mx-auto reveal">
+        <h2 class="text-3xl pacifico mb-12 text-center text-pink-200">Галерея образов</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="glass-card p-2 aspect-[3/4] overflow-hidden"><img src="https://images.unsplash.com/photo-1618335829737-2228ad30662b?w=600" class="w-full h-full object-cover rounded-2xl"></div>
+            <div class="glass-card p-2 aspect-[3/4] overflow-hidden"><img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=600" class="w-full h-full object-cover rounded-2xl"></div>
+            <div class="glass-card p-2 aspect-[3/4] overflow-hidden"><img src="https://images.unsplash.com/photo-1633109529152-d695121ca943?w=600" class="w-full h-full object-cover rounded-2xl"></div>
+            <div class="glass-card p-2 aspect-[3/4] overflow-hidden"><img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=600" class="w-full h-full object-cover rounded-2xl"></div>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/5 text-center">
+        <p class="pacifico text-xl text-pink-200 mb-4 tracking-widest">AII Dream</p>
+        <div class="text-[10px] opacity-40 uppercase tracking-[0.3em]">Digital Art Studio © 2026</div>
+    </footer>
+
+    <script>
+        // Меню
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+        const menuLinks = menu.querySelectorAll('a');
+
+        btn.onclick = () => menu.classList.toggle('hidden');
+        
+        menuLinks.forEach(link => {
+            link.onclick = () => {
+                if (!menu.classList.contains('hidden')) {
+                    menu.classList.add('hidden');
+                }
+            };
+        });
+
+        // Заказ
+        function order(plan) {
+            const PHONE = "37255659292";
+            const text = `Привет! Хочу заказать "${plan}" за 39€. ✨`;
+            window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`);
+        }
+
+        // Анимация появления
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
