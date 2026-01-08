@@ -1,126 +1,284 @@
-<!DOCTYPE html><html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI-Фотосессии — Разные темы и жанры</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #1b0f24;
-      color: #fff;
-    }
-    header {
-      background: url('piony-banner.jpg') center/cover no-repeat;
-      padding: 120px 20px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 48px;
-      margin: 0;
-      color: #ffd6f0;
-    }
-    nav {
-      background-color: rgba(0, 0, 0, 0.4);
-      padding: 15px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-    }
-    nav a {
-      color: #ffd6f0;
-      margin: 0 15px;
-      text-decoration: none;
-      font-size: 18px;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-    h2 {
-      color: #ffb0d8;
-      margin-bottom: 20px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background-color: #2b1938;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-    }
-    .cta {
-      display: inline-block;
-      padding: 12px 25px;
-      background-color: #ff69a8;
-      color: white;
-      font-size: 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Design. Реализуй свои желания и мечты!</title>
+    
+    <link rel="icon" href="https://fav.farm/🌸">
+    <meta name="description" content="Профессиональные AI-фотосессии: детские, женские и тематические образы. Создайте мечту с помощью искусственного интеллекта.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        body { 
+            margin: 0; 
+            font-family: 'Roboto', sans-serif; 
+            background-color: #1b0f24; 
+            color: #fff; 
+            line-height: 1.6;
+        }
+
+        header {
+            position: relative;
+            overflow: hidden;
+            padding: 120px 20px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(27, 15, 36, 0.6);
+            z-index: 0;
+        }
+
+        header h1 { 
+            position: relative;
+            z-index: 1;
+            font-size: 48px; 
+            margin: 0; 
+            color: #ffd6f0; 
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        nav { 
+            background-color: rgba(0, 0, 0, 0.7); 
+            padding: 15px; 
+            text-align: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        nav a { 
+            color: #ffd6f0; 
+            margin: 0 15px; 
+            text-decoration: none; 
+            font-size: 18px; 
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff69a8;
+        }
+
+        section { 
+            padding: 80px 20px; 
+            max-width: 1100px; 
+            margin: auto; 
+        }
+
+        h2 { 
+            color: #ffb0d8; 
+            margin-bottom: 30px; 
+            font-size: 32px;
+            text-align: center;
+        }
+
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 25px; 
+        }
+
+        .card { 
+            background-color: #2b1938; 
+            padding: 30px; 
+            border-radius: 12px; 
+            text-align: center; 
+            transition: transform 0.3s;
+            border: 1px solid #3d2550;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #ff69a8;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff69a8;
+            margin: 15px 0;
+        }
+
+        .cta-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta { 
+            display: inline-block; 
+            padding: 15px 35px; 
+            background-color: #ff69a8; 
+            color: white; 
+            font-size: 20px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .cta:hover { 
+            background-color: #ff4d94; 
+            box-shadow: 0 0 20px rgba(255, 105, 168, 0.5);
+        }
+
+        .process-step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .process-step::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #ff69a8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .gallery-item {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 32px; }
+            nav a { display: block; margin: 10px 0; }
+            section {
+                padding: 40px 10px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
+
+<header>
+    <video autoplay muted loop class="video-background">
+        <source src="video.mp4" type="video/mp4">
+        <source src="video.webm" type="video/webm">
+        <img src="fallback.jpg" alt="Fallback image">
+    </video>
+    <div class="header-overlay"></div>
     <h1>AI-Фотосессии • Разные темы и жанры</h1>
-  </header>  <nav>
-    <a href="#about">О себе</a>
-    <a href="#genres">Жанры</a>
-    <a href="#offers">Акции</a>
-    <a href="#tariffs">Тарифы</a>
-    <a href="#process">Процесс</a>
-    <a href="#order">Как заказать</a>
-  </nav>  <section id="about">
+</header>
+
+<nav>
+    <a href="#about" aria-label="Перейти к разделу о себе">О себе</a>
+    <a href="#genres" aria-label="Перейти к разделу с жанрами">Жанры</a>
+    <a href="#offers" aria-label="Перейти к разделу с акциями">Акции</a>
+    <a href="#prices" aria-label="Перейти к разделу с тарифами">Тарифы</a>
+    <a href="#process" aria-label="Перейти к процессу работы">Процесс</a>
+    <a href="#order" aria-label="Перейти к разделу заказа">Как заказать</a>
+</nav>
+
+<section id="about">
     <h2>О себе</h2>
-    <p>Я создаю уникальные AI-фотосессии, позволяющие детям и взрослым увидеть себя в любых образах, жанрах и фантазийных мирах. Каждая работа — это искусство, стиль и настроение, созданное под индивидуальные пожелания.</p>
-  </section>  <section id="genres">
+    <p style="text-align: center; font-size: 18px; max-width: 800px; margin: auto;">
+        Всем привет! Рада Вас видеть на своем творческом сайте! Никогда не думала, что буду заниматься AI-фотосессиями... [Ваш замечательный текст] ... Будьте смелыми, не бойтесь нового интересного опыта с AI-фотосессией!
+    </p>
+</section>
+
+<section id="genres">
     <h2>Жанры фотосессий</h2>
     <div class="grid">
-      <div class="card">Для девочек</div>
-      <div class="card">Для мальчиков</div>
-      <div class="card">Для малышей 6+</div>
-      <div class="card">Для настроения</div>
-      <div class="card">Путешествие мечты</div>
-      <div class="card">Смелые образы</div>
+        <div class="card"><h3>🌸 Для девочек</h3><p>Розовая мечта.</p></div>
+        <div class="card"><h3>🚀 Для мальчиков</h3><p>Самые настоящие.</p></div>
+        <div class="card"><h3>👶 Для малышей 6+</h3><p>Радость.</p></div>
+        <div class="card"><h3>✨ Для настроения</h3><p>Будь смелой</p></div>
+        <div class="card"><h3>🌍 Путешествие мечты</h3><p>Любая точка мира, не выходя из дома.</p></div>
+        <div class="card"><h3>🔥 Смелые образы</h3><p>Драйв и адреналин</p></div>
     </div>
-  </section>  <section id="offers">
+</section>
+
+<div class="gallery-grid">
+    <img src="https://i.ibb.co/Rp8Zzbm8/1767696125606.png" class="gallery-item show" alt="Моя работа" loading="lazy">
+    <img src="https://i.ibb.co/d09tbH0w/1767693687019.png" class="gallery-item show" alt="Моя работа" loading="lazy">
+    <img src="https://i.ibb.co/217WcRrw/1767696712124.png" class="gallery-item show" alt="Моя работа" loading="lazy">
+    <img src="https://i.ibb.co/vCnFPDwz/1767697525818.png" class="gallery-item show" alt="Моя работа" loading="lazy">
+    <img src="https://i.ibb.co/JRjKxrwJ/1767699340954.png" class="gallery-item show" alt="Моя работа" loading="lazy">
+    <img src="https://i.ibb.co/23Xdjt9g/1767699498369.png" class="gallery-item show" alt="Моя работа" loading="lazy">
+    <img src="https://i.ibb.co/1J6RD4Y3/1767701298413.png" class="gallery-item show" alt="Моя работа" loading="lazy">
+    <img src="https://i.ibb.co/6cjNnTD4/1767773423522.png" class="gallery-item show" alt="Моя работа" loading="lazy">
+    <img src="https://i.ibb.co/1tYsmtMn/1767799279785.png" class="gallery-item show" alt="Моя работа" loading="lazy">
+    <img src="https://i.ibb.co/ZRcXR6MC/1767799949136.png" class="gallery-item show" alt="Моя работа" loading="lazy">
+    <img src="https://i.ibb.co/bghGBGcG/1767800310002.png" class="gallery-item show" alt="Моя работа" loading="lazy">
+</div>
+
+<section id="offers" style="background-color: #241430; border-radius: 20px;">
     <h2>Акции и предложения</h2>
-    <p>Сезонные скидки, наборы образов, подарочные сертификаты и спецпредложения. Узнайте подробнее и выберите подходящее!</p>
-  </section>  <section id="tariffs">
+    <p style="text-align: center; font-size: 20px;">
+        В январе скидка <strong>-30%</strong> на все пакеты!
+    </p>
+</section>
+
+<section id="prices">
     <h2>Тарифы и пакеты услуг</h2>
     <div class="grid">
-      <div class="card">
-        <h3>Мини</h3>
-        <p>5 фото • 1 стиль • 1 персонаж</p>
-        <p><strong>Цена: 25€</strong></p>
-      </div>
-      <div class="card">
-        <h3>Стандарт</h3>
-        <p>10 фото • 2 стиля • 1-2 персонажа</p>
-        <p><strong>Цена: 40€</strong></p>
-      </div>
-      <div class="card">
-        <h3>Премиум</h3>
-        <p>20 фото • 3-4 стиля • расширенная ретушь</p>
-        <p><strong>Цена: 65€</strong></p>
-      </div>
+        <div class="card">
+            <h3>Пакет «Праздник»</h3>
+            <p>10 фото + 1 видео в подарок</p>
+            <div class="price">70€ <span style="text-decoration: line-through; font-size: 16px; opacity: 0.6;">100€</span></div>
+        </div>
     </div>
-  </section>  <section id="process">
+</section>
+
+<section id="process">
     <h2>Процесс работы</h2>
-    <ol>
-      <li>Вы выбираете жанр и тариф</li>
-      <li>Отправляете фото ребёнка или своё</li>
-      <li>Получаете готовые AI-образы</li>
-      <li>Корректировки при необходимости</li>
-    </ol>
-  </section>  <section id="order">
+    <div style="max-width: 600px; margin: auto;">
+        <div class="process-step">Выбираем категорию и обсуждаем детали</div>
+        <div class="process-step">Отправляете фото ребёнка или своё (портретное)</div>
+        <div class="process-step">Я создаю уникальные AI-образы</div>
+        <div class="process-step">Вы получаете готовые работы и влюбляетесь в результат!</div>
+    </div>
+</section>
+
+<section id="order">
     <h2>Как заказать</h2>
-    <p>Нажмите на кнопку ниже, чтобы написать напрямую в WhatsApp и оформить заказ.</p>
-    <a class="cta" href="https://wa.me/" target="_blank">Написать в WhatsApp</a>
-  </section></body>
+    <p style="text-align: center;">Нажмите на кнопку ниже, чтобы написать напрямую в WhatsApp и обсудить вашу идеальную фотосессию.</p>
+    <div class="cta-container">
+        <a href="https://wa.me/37255659292" class="cta" target="_blank" rel="noopener noreferrer">Написать в WhatsApp</a>
+    </div>
+</section>
+
+<footer>
+    &copy; 2025-2026 AI Photo Studio. Все права защищены.
+</footer>
+
+</body>
 </html>
