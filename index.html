@@ -11,16 +11,15 @@
     
     <style>
         :root { --pink: #ffb6c1; --purple: #b39ddb; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
         body { 
             font-family: 'Unbounded', sans-serif; 
             background: #0a0a0a; 
             color: white; 
-            scroll-behavior: smooth; 
             overflow-x: hidden; 
         }
         .pacifico { font-family: 'Pacifico', cursive; }
         
-        /* Анимированный фон */
         .candy-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: radial-gradient(circle at 10% 20%, rgba(255,182,193,0.15) 0%, transparent 40%),
@@ -30,7 +29,6 @@
         }
         @keyframes pulseBg { 0% { opacity: 0.5; } 100% { opacity: 1; } }
 
-        /* Стеклянные карточки */
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -50,13 +48,12 @@
         }
         .btn-gradient:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 133, 162, 0.5); }
 
+        .filter-btn { transition: all 0.3s ease; cursor: pointer; }
         .filter-btn.active { background: linear-gradient(90deg, #ff85a2, #a78bfa); border-color: transparent; }
         
-        /* Скрытие элементов галереи */
         .gallery-item { transition: all 0.5s ease-in-out; }
         .gallery-item.hidden { display: none; opacity: 0; transform: scale(0.9); }
 
-        /* Анимация появления */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
@@ -65,16 +62,16 @@
 
     <div class="candy-bg"></div>
 
-    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto relative z-[100]">
-        <div class="text-2xl pacifico text-pink-200">AII Dream</div>
-        <div class="hidden md:flex gap-8 text-[10px] uppercase tracking-widest font-bold">
+    <nav class="fixed top-0 left-0 w-full p-6 flex justify-between items-center max-w-7xl mx-auto z-[100] backdrop-blur-sm">
+        <div class="text-2xl pacifico text-pink-200 ml-4 md:ml-10">AII Dream</div>
+        <div class="hidden md:flex gap-8 text-[10px] uppercase tracking-widest font-bold mr-10">
             <a href="#about" class="hover:text-pink-300 transition">Обо мне</a>
             <a href="#prices" class="hover:text-pink-300 transition">Цены</a>
             <a href="#gallery" class="hover:text-pink-300 transition">Работы</a>
         </div>
     </nav>
 
-    <header class="text-center pt-24 pb-12 px-6 reveal">
+    <header class="text-center pt-40 pb-12 px-6 reveal">
         <h1 class="text-5xl md:text-8xl font-bold mb-6 italic tracking-tighter text-white">
             Digital <span class="pacifico font-normal text-pink-300">Cotton</span>
         </h1>
@@ -102,9 +99,11 @@
     <section id="prices" class="py-20 px-6 max-w-6xl mx-auto reveal">
         <div class="text-center mb-12">
             <h2 class="text-4xl md:text-6xl pacifico mb-4 text-pink-200">Январский Sale</h2>
+            <p class="text-pink-300/60 uppercase tracking-[0.3em] text-[10px]">-30% только до конца месяца</p>
         </div>
+        
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass-card p-10 flex flex-col justify-between">
+            <div class="glass-card p-10 flex flex-col justify-between border-pink-400/10">
                 <div>
                     <h3 class="text-2xl font-bold mb-2 uppercase italic">Для девочек</h3>
                     <p class="text-[10px] text-pink-300 mb-8 uppercase tracking-widest">Digital Aesthetics</p>
@@ -113,22 +112,17 @@
                         <li>✦ 1 Видео-арт в подарок</li>
                     </ul>
                 </div>
-                <button onclick="orderWhatsApp('Пакет Для Девочек')" class="btn-gradient w-full py-4 rounded-full font-bold uppercase text-[10px] tracking-widest">Заказать в WhatsApp</button>
-            </div>
-            <div class="glass-card p-10 flex flex-col justify-between">
                 <div>
-                    <h3 class="text-2xl font-bold mb-2 text-purple-100 uppercase italic">Для мальчиков</h3>
-                    <p class="text-[10px] text-purple-300 mb-8 uppercase tracking-widest">Modern Style</p>
-                    <ul class="space-y-4 mb-10 text-sm opacity-70">
-                        <li>✦ 10 ИИ-фотографий</li>
-                        <li>✦ Индивидуальный образ</li>
-                    </ul>
-                </div>
-                <button onclick="orderWhatsApp('Пакет Для Мальчиков')" class="btn-gradient w-full py-4 rounded-full font-bold uppercase text-[10px] tracking-widest">Заказать в WhatsApp</button>
-            </div>
+                    <div class="mb-6 flex items-baseline gap-3">
+                        <span class="text-lg line-through opacity-30">100€</span>
+                        <span class="text-4xl font-bold text-pink-200">70€</span>
+                    </div>
+                    <button onclick="order
+            <button onclick="orderWhatsApp('Пакет Для Мальчиков')" class="btn-gradient w-full py-4 rounded-full font-bold uppercase text-[10px] tracking-widest">Заказать в WhatsApp</button>
         </div>
-    </section>
-
+    </div> </div> 
+    </div>
+</section>
     <section id="gallery" class="py-24 px-6 max-w-7xl mx-auto reveal">
         <div class="text-center mb-16">
             <h2 class="text-4xl md:text-6xl pacifico mb-8 text-pink-200">Галерея</h2>
