@@ -1,162 +1,126 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AII Dream Studio | Твоя ИИ-Фотосессия</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;700&family=Pacifico&display=swap" rel="stylesheet">
-    
-    <style>
-        :root { --pink: #ffb6c1; --purple: #b39ddb; }
-        body { font-family: 'Unbounded', sans-serif; background: #0a0a0a; color: white; scroll-behavior: smooth; overflow-x: hidden; }
-        .pacifico { font-family: 'Pacifico', cursive; }
-        
-        .candy-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background: radial-gradient(circle at 10% 20%, rgba(255,182,193,0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(179,157,219,0.15) 0%, transparent 40%);
-            filter: blur(80px);
-            animation: pulseBg 10s infinite alternate ease-in-out;
-        }
-        @keyframes pulseBg { 0% { opacity: 0.5; } 100% { opacity: 1; } }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 32px;
-            transition: all 0.4s ease;
-        }
-        .glass-card:hover {
-            border-color: var(--pink);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(255, 182, 193, 0.1);
-        }
-
-        .btn-gradient {
-            background: linear-gradient(90deg, #ff85a2, #a78bfa);
-            transition: all 0.3s ease;
-        }
-        .btn-gradient:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 133, 162, 0.5); }
-
-        .filter-btn.active { background: linear-gradient(90deg, #ff85a2, #a78bfa); border-color: transparent; }
-        .gallery-item { transition: all 0.5s ease-in-out; }
-        .gallery-item.hidden { display: none; opacity: 0; transform: scale(0.9); }
-
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Фотосессии — Разные темы и жанры</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1b0f24;
+      color: #fff;
+    }
+    header {
+      background: url('piony-banner.jpg') center/cover no-repeat;
+      padding: 120px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 48px;
+      margin: 0;
+      color: #ffd6f0;
+    }
+    nav {
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+    }
+    nav a {
+      color: #ffd6f0;
+      margin: 0 15px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h2 {
+      color: #ffb0d8;
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: #2b1938;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .cta {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #ff69a8;
+      color: white;
+      font-size: 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-
-    <div class="candy-bg"></div>
-
-    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto relative z-[100]">
-        <div class="text-2xl pacifico text-pink-200">AII Dream</div>
-        <div class="hidden md:flex gap-8 text-[10px] uppercase tracking-widest font-bold">
-            <a href="#about" class="hover:text-pink-300 transition">Обо мне</a>
-            <a href="#prices" class="hover:text-pink-300 transition">Цены</a>
-            <a href="#gallery" class="hover:text-pink-300 transition">Работы</a>
-        </div>
-    </nav>
-
-    <header class="text-center pt-24 pb-12 px-6 reveal">
-        <h1 class="text-5xl md:text-8xl font-bold mb-6 italic tracking-tighter text-white">Digital <span class="pacifico font-normal text-pink-300">Cotton</span></h1>
-        <p class="max-w-xl mx-auto opacity-60 text-sm md:text-base mb-10">Твои идеальные ИИ-фотосессии в эстетике нежности и вкуса.</p>
-        <button onclick="orderWhatsApp('Общий запрос')" class="btn-gradient px-12 py-5 rounded-full font-bold uppercase text-[10px] tracking-widest inline-block">Заказать съемку</button>
-    </header>
-
-    <section id="about" class="py-24 px-6 max-w-6xl mx-auto reveal">
-        <div class="glass-card p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden">
-            <div class="relative w-64 h-80 shrink-0">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600" class="relative w-full h-full object-cover rounded-3xl border border-white/10 shadow-2xl">
-            </div>
-            <div class="space-y-6">
-                <h2 class="text-3xl md:text-4xl font-bold italic">Привет! Я во <span class="pacifico text-pink-300">вселенной красоты</span></h2>
-                <div class="text-sm opacity-70 leading-relaxed space-y-4">
-                    <p>Я — человек энергии и эстетики. Дизайн, декор, фотосъемка и реклама — это моя жизнь. Мой подход — это умение угадать ожидания клиентки и сохранить вашу природную красоту.</p>
-                    <p class="text-pink-200 italic font-bold">Позвольте себе этот вдохновляющий опыт!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="prices" class="py-20 px-6 max-w-6xl mx-auto reveal">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl md:text-6xl pacifico mb-4 text-pink-200">Январский Sale</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="glass-card p-10 flex flex-col justify-between">
-                <div>
-                    <h3 class="text-2xl font-bold mb-2 uppercase italic">Для девочек</h3>
-                    <p class="text-[10px] text-pink-300 mb-8 uppercase tracking-widest">Digital Aesthetics</p>
-                    <ul class="space-y-4 mb-10 text-sm opacity-70">
-                        <li>✦ 10 ИИ-фотографий</li>
-                        <li>✦ 1 Видео-арт в подарок</li>
-                    </ul>
-                </div>
-                <button onclick="orderWhatsApp('Пакет Для Девочек')" class="btn-gradient w-full py-4 rounded-full font-bold uppercase text-[10px] tracking-widest">Заказать в WhatsApp</button>
-            </div>
-            <div class="glass-card p-10 flex flex-col justify-between">
-                <div>
-                    <h3 class="text-2xl font-bold mb-2 text-purple-100 uppercase italic">Для мальчиков</h3>
-                    <p class="text-[10px] text-purple-300 mb-8 uppercase tracking-widest">Modern Style</p>
-                    <ul class="space-y-4 mb-10 text-sm opacity-70">
-                        <li>✦ 10 ИИ-фотографий</li>
-                        <li>✦ Индивидуальный образ</li>
-                    </ul>
-                </div>
-                <button onclick="orderWhatsApp('Пакет Для Мальчиков')" class="btn-gradient w-full py-4 rounded-full font-bold uppercase text-[10px] tracking-widest">Заказать в WhatsApp</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="gallery" class="py-24 px-6 max-w-7xl mx-auto reveal">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-6xl pacifico mb-8 text-pink-200">Галерея</h2>
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button onclick="filterGallery('all')" class="filter-btn active px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest">Все</button>
-                <button onclick="filterGallery('girls')" class="filter-btn px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest">Девочки</button>
-                <button onclick="filterGallery('boys')" class="filter-btn px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest">Мальчики</button>
-                <button onclick="filterGallery('mood')" class="filter-btn px-8 py-3 rounded-full border border-white/10 text-[10px] uppercase tracking-widest">Настроение</button>
-            </div>
-        </div>
-        <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="gallery-item girls glass-card overflow-hidden group">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
-            </div>
-            <div class="gallery-item boys glass-card overflow-hidden group">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
-            </div>
-            <div class="gallery-item mood glass-card overflow-hidden group">
-                <img src="https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?w=600" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // Функция для WhatsApp
-        function orderWhatsApp(packageName) {
-            const phone = "37255659292"; // ЗАМЕНИТЕ НА ВАШ НОМЕР (БЕЗ +)
-            const text = encodeURIComponent(`Здравствуйте! Хочу заказать ИИ-фотосессию: ${packageName}`);
-            window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-        }
-
-        function filterGallery(category) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.getAttribute('onclick').includes(category)) btn.classList.add('active');
-            });
-            document.querySelectorAll('.gallery-item').forEach(item => {
-                item.classList.toggle('hidden', category !== 'all' && !item.classList.contains(category));
-            });
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
-</body>
+  <header>
+    <h1>AI-Фотосессии • Разные темы и жанры</h1>
+  </header>  <nav>
+    <a href="#about">О себе</a>
+    <a href="#genres">Жанры</a>
+    <a href="#offers">Акции</a>
+    <a href="#tariffs">Тарифы</a>
+    <a href="#process">Процесс</a>
+    <a href="#order">Как заказать</a>
+  </nav>  <section id="about">
+    <h2>О себе</h2>
+    <p>Я создаю уникальные AI-фотосессии, позволяющие детям и взрослым увидеть себя в любых образах, жанрах и фантазийных мирах. Каждая работа — это искусство, стиль и настроение, созданное под индивидуальные пожелания.</p>
+  </section>  <section id="genres">
+    <h2>Жанры фотосессий</h2>
+    <div class="grid">
+      <div class="card">Для девочек</div>
+      <div class="card">Для мальчиков</div>
+      <div class="card">Для малышей 6+</div>
+      <div class="card">Для настроения</div>
+      <div class="card">Путешествие мечты</div>
+      <div class="card">Смелые образы</div>
+    </div>
+  </section>  <section id="offers">
+    <h2>Акции и предложения</h2>
+    <p>Сезонные скидки, наборы образов, подарочные сертификаты и спецпредложения. Узнайте подробнее и выберите подходящее!</p>
+  </section>  <section id="tariffs">
+    <h2>Тарифы и пакеты услуг</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Мини</h3>
+        <p>5 фото • 1 стиль • 1 персонаж</p>
+        <p><strong>Цена: 25€</strong></p>
+      </div>
+      <div class="card">
+        <h3>Стандарт</h3>
+        <p>10 фото • 2 стиля • 1-2 персонажа</p>
+        <p><strong>Цена: 40€</strong></p>
+      </div>
+      <div class="card">
+        <h3>Премиум</h3>
+        <p>20 фото • 3-4 стиля • расширенная ретушь</p>
+        <p><strong>Цена: 65€</strong></p>
+      </div>
+    </div>
+  </section>  <section id="process">
+    <h2>Процесс работы</h2>
+    <ol>
+      <li>Вы выбираете жанр и тариф</li>
+      <li>Отправляете фото ребёнка или своё</li>
+      <li>Получаете готовые AI-образы</li>
+      <li>Корректировки при необходимости</li>
+    </ol>
+  </section>  <section id="order">
+    <h2>Как заказать</h2>
+    <p>Нажмите на кнопку ниже, чтобы написать напрямую в WhatsApp и оформить заказ.</p>
+    <a class="cta" href="https://wa.me/" target="_blank">Написать в WhatsApp</a>
+  </section></body>
 </html>
